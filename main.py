@@ -24,10 +24,10 @@ while(True) :
 			uuid = get_disk_uuid(disk)
 			
 	if(uuid != uuid_prev) : 
-		print("different")
+		print("change of disk")
 		authenticated = False
 	
-	size_in_blocks = float(get_disk_info(disk, uuid))
+	size_in_blocks = float(get_disk_info(disk))
 	
 	while (authenticated == False) : 
 		authenticated = add_usb(uuid, size_in_blocks)
@@ -42,10 +42,9 @@ while(True) :
 	if(status["in_test"]) :
 		result = test_process(disk, uuid, status["N"], status["data_written"], size_in_blocks)
 		if(result != None) : 
-			#data = {"test_data" : str(result), "data_written" : status["N"], "error" : ""}
 			add_data(uuid, result)
 	status = None
-	break
+	sleep(120)
 
 
 

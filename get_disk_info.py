@@ -24,7 +24,7 @@ def get_disk_uuid(disk) :
 
 
 
-def get_disk_info(disk, uuid) : 
+def get_disk_info(disk) : 
 	cmd = "blockdev" 
 	temp = subprocess.Popen([cmd, "--getsize64", disk], stdout = subprocess.PIPE)
 	output, err = temp.communicate() 

@@ -33,17 +33,19 @@ def what_next(uuid) :
 
 #fonctionne sans la gestion des erreurs		
 def add_data(uuid, data) :
-	url = "{}/add_data/{}".format(endpoint, uuid)
-	payload = data
-	print(data)
-	headers = {
-	  'Content-Type': 'application/x-www-form-urlencoded'
-	}
+	while(True) :
+		url = "{}/add_data/{}".format(endpoint, uuid)
+		payload = data
+		print(data)
+		headers = {
+		  'Content-Type': 'application/x-www-form-urlencoded'
+		}
 
-	response = requests.request("POST", url, headers=headers, data=payload)
-	if(response.status_code == 201) : 
-		return(response.json())
-	else :
-		return(None)
+		response = requests.request("POST", url, headers=headers, data=payload)
+		if(response.status_code == 201) : 
+			return(response.json())
+		else :
+			print(response.status_code)
+			sleep(60)
 
 		
