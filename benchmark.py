@@ -78,13 +78,13 @@ def benchmark(disk, size_in_blocks, N, count, bs, seek) :
 	fill_random_test = None
 	fill_1_test = None
 	try :
-		sleep(60)
+		time.sleep(60)
 		read_test = hdparm(disk)
-		sleep(60)
+		time.sleep(60)
 		fill_0_test = size_in_blocks / fill_0(disk, count, bs, seek) 
-		sleep(60)
+		time.sleep(60)
 		fill_random_test = size_in_blocks / fill_random(disk, count, bs, seek) 
-		sleep(60)
+		time.sleep(60)
 		fill_1_test = size_in_blocks / fill_1(disk, count, bs, seek)
 		sleep(60)
 		return({"fill_0_test" : fill_0_test,
