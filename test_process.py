@@ -19,6 +19,7 @@ def test_process(disk, uuid, N, data_written, size_in_blocks) :
 	j = N
 	seek = get_seek(bs_int)
 	try : 
+		t = 0
 		count = int(size_in_blocks // (bs_int) - 1)
 		if(N > 3) : 
 			for i in range(data_written, data_written+N-3) :
@@ -32,6 +33,9 @@ def test_process(disk, uuid, N, data_written, size_in_blocks) :
 				test_data["error"] = ""
 				add_data(uuid, test_data)
 				sleep(60)
+				if(t==5) :
+					sleep(120)
+				t += 1
 		result = benchmark(disk, size_in_blocks, i, count, bs, seek)
 		return({ "test_data" : str(result), "data_written" : 3, "error": ""})
 	
