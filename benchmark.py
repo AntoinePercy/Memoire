@@ -2,7 +2,7 @@ import subprocess
 from utils import wacht
 import numpy
 import sys
-
+import time
 bs = "256K"
 
 #Fonctionne
