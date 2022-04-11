@@ -1,6 +1,6 @@
 from benchmark import fill_random, benchmark
 from server_call import what_next, add_data
-from time import sleep
+from utils import wacht
 import sys 
 
 num = 2
@@ -32,9 +32,9 @@ def test_process(disk, uuid, N, data_written, size_in_blocks) :
 				test_data["data_written"] = 1 
 				test_data["error"] = ""
 				add_data(uuid, test_data)
-				sleep(60)
+				wacht(60)
 				if(t==5) :
-					sleep(120)
+					wacht(120)
 				t += 1
 		result = benchmark(disk, size_in_blocks, i, count, bs, seek)
 		return({ "test_data" : str(result), "data_written" : 3, "error": ""})
@@ -62,5 +62,5 @@ def wait_process(uuid) :
 				print("launch_process") 
 				sys.stdout.flush()
 				return(status)
-		sleep(120)
+		wacht(120)
 		

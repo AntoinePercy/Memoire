@@ -3,7 +3,7 @@
 from benchmark import benchmark 
 from get_disk_info import *
 from server_call import *
-from time import sleep
+from utils import wacht, put_dev
 from test_process import test_process, wait_process
 import sys
 
@@ -13,13 +13,22 @@ uuid = 0
 authenticated = False
 print("start of testing for disk", disk)
 sys.stdout.flush()
+
+try : 
+	put_dev(sys.argv[2])
+except Exception as e : 
+	print(e)
+	pass
+
+
+i = 0
 while(True) : 
 	uuid_prev = uuid
 	uuid = get_disk_uuid(disk)
 	print("uuid =", uuid)
 	sys.stdout.flush()
 	while( uuid == None) : 
-			sleep(60)
+			wacht(60)
 			authenticated = False
 			uuid = get_disk_uuid(disk)
 			
@@ -34,7 +43,7 @@ while(True) :
 		print("authenticated =", authenticated)
 		sys.stdout.flush()
 		if(authenticated == False) :
-			sleep(60)
+			wacht(60)
 		else : 
 			print("Size of", disk, "is", size_in_blocks) 
 			
@@ -44,7 +53,13 @@ while(True) :
 		if(result != None) : 
 			add_data(uuid, result)
 	status = None
-	sleep(120)
+	wacht(120)
+	if(i == 5) : 
+		wacht(1800)
+		print("hybernation")
+		i = 0
+	i += 1
+	
 
 
 

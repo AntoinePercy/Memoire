@@ -1,5 +1,5 @@
 import subprocess
-import time
+from utils import wacht
 import numpy
 import sys
 
@@ -78,15 +78,15 @@ def benchmark(disk, size_in_blocks, N, count, bs, seek) :
 	fill_random_test = None
 	fill_1_test = None
 	try :
-		time.sleep(60)
+		wacht(60)
 		read_test = hdparm(disk)
-		time.sleep(60)
+		wacht(60)
 		fill_0_test = size_in_blocks / fill_0(disk, count, bs, seek) 
-		time.sleep(60)
+		wacht(60)
 		fill_random_test = size_in_blocks / fill_random(disk, count, bs, seek) 
-		time.sleep(60)
+		wacht(60)
 		fill_1_test = size_in_blocks / fill_1(disk, count, bs, seek)
-		time.sleep(60)
+		wacht(60)
 		return({"fill_0_test" : fill_0_test,
 				"fill_1_test" : fill_1_test,
 				"read_test" : read_test, 
