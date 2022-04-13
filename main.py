@@ -45,7 +45,9 @@ while(True) :
 		if(authenticated == False) :
 			wacht(60)
 		else : 
-			print("Size of", disk, "is", size_in_blocks) 
+			print("Size of", disk, "is", size_in_blocks)
+			res =  {"test_data" : "start", "data_written" : 0, "error": ""}
+			add_data(uuid, res) 
 			
 	status = wait_process(uuid) 
 	if(status["in_test"]) :
@@ -54,10 +56,12 @@ while(True) :
 			add_data(uuid, result)
 	status = None
 	wacht(120)
-	if(i == 5) : 
+	if(i == 4) : 
 		wacht(1800)
+		res = {"test_data" : "hybernation", "data_written" : 0, "error": ""}
+		add_data(uuid, res) 
 		print("hybernation")
-		i = 0
+		i = -1
 	i += 1
 	
 

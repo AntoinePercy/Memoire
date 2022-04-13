@@ -2,6 +2,7 @@ from benchmark import fill_random, benchmark
 from server_call import what_next, add_data
 from utils import wacht
 import sys 
+import time
 
 num = 2
 bs = "4096"
@@ -28,7 +29,7 @@ def test_process(disk, uuid, N, data_written, size_in_blocks) :
 				print("fill random number", i)
 				sys.stdout.flush()
 				delay = fill_random(disk, count, bs, seek)
-				test_data["test_data"] = str({i : size_in_blocks / delay })
+				test_data["test_data"] = str({i : size_in_blocks / delay, t : time.time() })
 				test_data["data_written"] = 1 
 				test_data["error"] = ""
 				add_data(uuid, test_data)
