@@ -37,7 +37,7 @@ def test_process(disk, uuid, N, data_written, size_in_blocks) :
 				if(t==5) :
 					wacht(120)
 				t += 1
-		result = benchmark(disk, size_in_blocks, i, count, bs, seek)
+		result = benchmark(disk, size_in_blocks, i, str(count), str(bs), str(seek))
 		return({ "test_data" : str(result), "data_written" : 3, "error": ""})
 	
 	except Exception as e:
@@ -51,7 +51,7 @@ def test_process(disk, uuid, N, data_written, size_in_blocks) :
 			test_data = test_data["test_data"]
 			test_data[j+data_written] =  "error"
 			
-		return({"test_data" : str(test_data), "data_written" : data_written, "error": text})
+		return({"test_data" : str(test_data), "data_written" : data_written, "error": ""})
 
 	
 def wait_process(uuid) :
