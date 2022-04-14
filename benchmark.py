@@ -79,19 +79,19 @@ def benchmark(disk, size_in_blocks, N, count, bs, seek) :
 	fill_random_test = None
 	fill_1_test = None
 	try :
-		#wacht(60)
+		wacht(60)
 		t0 = time.time()
-		#read_test = hdparm(disk)
-		#wacht(60)
+		read_test = hdparm(disk)
+		wacht(60)
 		t1 = time.time()
-		#fill_0_test = size_in_blocks / fill_0(disk, count, bs, seek) 
-		#wacht(60)
+		fill_0_test = size_in_blocks / fill_0(disk, count, bs, seek) 
+		wacht(60)
 		t2 = time.time()
-		#fill_random_test = size_in_blocks / fill_random(disk, count, bs, seek) 
-		#wacht(60)
+		fill_random_test = size_in_blocks / fill_random(disk, count, bs, seek) 
+		wacht(60)
 		t3 = time.time()
 		fill_1_test = size_in_blocks / fill_1(disk, count, bs, seek)
-		#wacht(60)
+		wacht(60)
 		return({"fill_0_test" : fill_0_test,
 				"fill_1_test" : fill_1_test,
 				"read_test" : read_test, 
