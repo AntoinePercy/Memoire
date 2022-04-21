@@ -6,6 +6,7 @@ from test_process import get_seek
 import numpy as np
 
 disk = sys.argv[1]
+print("disk", disk)
 bs = int(sys.argv[2])
 size_in_blocks = int(get_disk_info(disk))
 print("size in block", size_in_blocks)

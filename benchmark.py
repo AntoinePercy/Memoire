@@ -9,7 +9,7 @@ bs = "256K"
 def hdparm(disk) :
 	cmd = 'hdparm'
 	speed = []
-	for i in range(250) : 
+	for i in range(50) : 
 		temp = subprocess.Popen([cmd, '-t', disk], stdout = subprocess.PIPE)
 		#if(temp.returncode != 0) :
 		#	raise Exception(0, "Fill random Error with disk={}".format(disk))
@@ -102,7 +102,8 @@ def benchmark(disk, size_in_blocks, N, count, bs, seek) :
 				"t3" : t3
 				})
 	except Exception as e :
-		case , text  = e.args 
+		case , text  = e.args
+		print("error", text) 
 		test_data = {}
 		data_written = 0
 		if(case > 0) : 
