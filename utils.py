@@ -8,6 +8,7 @@ def put_dev(devi) :
 	print("dev =", dev)
 
 
-def wacht(t) :  
-	sleep(t)
-		
+def wacht(t, wait=True) :  
+	if(wait) :
+		sleep(t)
+	return()
